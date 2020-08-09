@@ -161,13 +161,13 @@ def plot_info(img_path, beach_info):
                          (float(sector_point[1]) - .0003, float(sector_point[0]) - .0001), color='#f9f9f9')
     ax.axis('off')
     plt.figtext(0.001, .06, datetime.now().strftime(' A las %H:%M del %m/%d/%Y (UTC+2)'), fontsize=7, ha='left',
-                fontname='Open Sans', weight='light', backgroundcolor='#fff')
+                weight='light', backgroundcolor='#fff')
     plt.figtext(0.001, 0.02, ' Por @SunSandSpace_bot (t.me/sunSandSpace_bot).', fontsize=7,
-                fontname='Open Sans', weight='light', backgroundcolor='#fff')
+                weight='light', backgroundcolor='#fff')
     plt.figtext(0.999, 0.065, 'Data: CC BY 4.0, Gijón Local Council. ', fontsize=7,
-                fontname='Open Sans', ha='right', weight='light', backgroundcolor='#fff')
+                ha='right', weight='light', backgroundcolor='#fff')
     plt.figtext(0.999, 0.02, 'Map: ODbL v1.0, OpenStreetMap Foundation. ',
-                fontsize=7, fontname='Open Sans', ha='right', weight='light', backgroundcolor='#fff')
+                fontsize=7, ha='right', weight='light', backgroundcolor='#fff')
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
     ax.imshow(bk_img, extent=lims, aspect='auto', origin='lower')
     buf = io.BytesIO()
@@ -320,9 +320,11 @@ def bot_license(update, context):
                               'bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Los mapas '
                               'sobre los que dibujo son de la [OpenStreetMap Foundation](https://osmfoundation.org/), '
                               'y se encuentran licenciados bajo [ODbL v1.0]('
-                              'https://opendatacommons.org/licenses/odbl/).', parse_mode='markdown', disable_web_page_preview=True)
+                              'https://opendatacommons.org/licenses/odbl/).', parse_mode='markdown',
+                              disable_web_page_preview=True)
     update.message.reply_text('Todo lo que te haya escrito está bajo licencia [CC BY-NC 4.0]('
-                              'https://creativecommons.org/licenses/by-nc/4.0/)', parse_mode='markdown', disable_web_page_preview=True)
+                              'https://creativecommons.org/licenses/by-nc/4.0/)', parse_mode='markdown',
+                              disable_web_page_preview=True)
 
 
 if __name__ == "__main__":
