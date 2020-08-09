@@ -19,7 +19,6 @@ __status__ = "Development"
 
 import io
 import json
-import logging
 from datetime import datetime
 
 import requests
@@ -28,7 +27,6 @@ from telegram import (KeyboardButton,
                       ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton)
 from telegram.ext import (Updater, CommandHandler, MessageHandler,
                           Filters, CallbackQueryHandler)
-
 
 API_URL = 'https://playasapi.ctic.es/v1/zones'
 
@@ -314,14 +312,9 @@ def bot_general(update, context):
 
 
 if __name__ == "__main__":
-    tm_token = '1384306034:AAE_FifFJHaIPvifaWTTMsI08axdbzgIBSE'
+    tm_token = 'BOT_TOKEN'
     updater = Updater(tm_token, use_context=True)
     dp = updater.dispatcher
-
-    # Enable logging
-    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                        level=logging.INFO)
-    logger = logging.getLogger(__name__)
 
     beach_menu = []
     beach_keyboard = []
