@@ -261,7 +261,7 @@ def bot_beach_markup_handler(update, context):
     query.answer()
     beach_info = get_beach_info(int(query.data), get_data(API_URL))
     update.callback_query.edit_message_text(
-        f'Por lo que veo, la {beach_info[1].name} está ocupada un {str(round(beach_info[1].averageEstimatedOccupation))} %')
+        f'Por lo que veo, la {beach_info[1].name} está ocupada un {str(round(beach_info[1].averageEstimatedOccupation))}%')
     query.message.reply_photo(beach_info[0], caption='Para ser más concretos, la cosa se ve asi.')
 
 
