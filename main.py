@@ -157,7 +157,7 @@ def plot_info(img_path, beach_info):
                 (sector.estimatedOccupation / 100) * len(colours) - 1 if sector.estimatedOccupation != 0 else 0)
             ax.plot(sector_point[1], sector_point[0], 'o', color=colours[colour_i], markersize=32)
             plt.annotate(str(sector.estimatedOccupation) + '%',
-                         (sector_point[1] - .0003, sector_point[0] - .0001), color='#f9f9f9')
+                         (float(sector_point[1]) - .0003, float(sector_point[0]) - .0001), color='#f9f9f9')
     ax.axis('off')
     plt.figtext(0.001, .06, datetime.now().strftime('A las %H:%M del %m/%d/%Y (UTC+2)'), fontsize=8, ha='left',
                 fontname='Open Sans', weight='light', backgroundcolor='#fff')
