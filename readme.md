@@ -1,6 +1,6 @@
 # SunSandSpace
 
-![SunSandSpace icon](https://www.github.com/ajuancer/sunSandSpace/master/docs/resources/img/logo_v1.png)**SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1][fn1]</sup> to reduce the spread of COVID-19<sup>[2][fn2]</sup>.
+![SunSandSpace icon](https://raw.githubusercontent.com/ajuancer/sunSandSpace/master/docs/resources/img/logo_v1.png | width=80)**SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1][fn1]</sup> to reduce the spread of COVID-19<sup>[2][fn2]</sup>.
 
 The project contains these files:
 
