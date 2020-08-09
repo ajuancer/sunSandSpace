@@ -29,7 +29,6 @@ from telegram import (KeyboardButton,
 from telegram.ext import (Updater, CommandHandler, MessageHandler,
                           Filters, CallbackQueryHandler)
 
-
 API_URL = 'https://playasapi.ctic.es/v1/zones'
 
 
@@ -162,11 +161,14 @@ def plot_info(img_path, beach_info):
             plt.annotate(str(sector.estimatedOccupation) + '%',
                          (float(sector_point[1]) - .0003, float(sector_point[0]) - .0001), color='#f9f9f9')
     ax.axis('off')
-    plt.figtext(0.001, .06, datetime.now().strftime('A las %H:%M del %m/%d/%Y (UTC+2)'), fontsize=8, ha='left',
+    plt.figtext(0.001, .06, datetime.now().strftime(' A las %H:%M del %m/%d/%Y (UTC+2)'), fontsize=7, ha='left',
                 fontname='Open Sans', weight='light', backgroundcolor='#fff')
-    plt.figtext(0.001, 0.02, 'Generado por @SunSandSpace_bot (t.me/sunSandSpace_bot).', fontsize=8,
-                fontname='Open Sans',
-                weight='light', backgroundcolor='#fff')
+    plt.figtext(0.001, 0.02, ' Por @SunSandSpace_bot (t.me/sunSandSpace_bot).', fontsize=7,
+                fontname='Open Sans', weight='light', backgroundcolor='#fff')
+    plt.figtext(0.999, 0.065, 'Data: CC BY 4.0, Gijón Local Council. ', fontsize=7,
+                fontname='Open Sans', ha='right', weight='light', backgroundcolor='#fff')
+    plt.figtext(0.999, 0.02, 'Map: ODbL v1.0, OpenStreetMap Foundation. ',
+                fontsize=7, fontname='Open Sans', ha='right', weight='light', backgroundcolor='#fff')
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
     ax.imshow(bk_img, extent=lims, aspect='auto', origin='lower')
     buf = io.BytesIO()
@@ -199,10 +201,6 @@ def get_beach_map(beach_id):
     """
     if beach_id == 1:
         return 'img/san_lorenzo_2300.png'
-    elif beach_id == 2:
-        return 'img/2_map.png'
-    elif beach_id == 3:
-        return 'img/3_map.png'
     else:
         return None
 
@@ -247,7 +245,7 @@ def bot_more_info(update, context):
                               '\no preguntar a mi amigo [@asturianBot](www.twitter.com/asturianBot)',
                               parse_mode='markdown', disable_web_page_preview=True)
     update.message.reply_text('*Sobre mi*: Si tienes curiosidad por saber más sobre mi, echa un ojo [aquí]('
-                              'ajuancer.github.io/sunsandspace)', parse_mode='markdown')
+                              'ajuancer.github.io/sunSandSpace)', parse_mode='markdown')
 
 
 def bot_beach_markup_handler(update, context):
@@ -313,6 +311,21 @@ def bot_general(update, context):
     update.message.reply_text('Para más info, selecciona una de las playas', reply_markup=beach_keyboard_markup)
 
 
+def bot_license(update, context):
+    """
+    Define /license command. Specifies all legal-related info.
+    :param update: Telegram.
+    :param context: Telegram.
+    """
+    update.message.reply_text('Para informarte, utilizo la información del [Ayuntamiento de Gijón](www.gijon.es), '
+                              'bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Los mapas '
+                              'sobre los que dibujo son de la [OpenStreetMap Foundation](https://osmfoundation.org/), '
+                              'y se encuentran licenciados bajo [ODbL v1.0]('
+                              'https://opendatacommons.org/licenses/odbl/).', parse_mode='markdown', disable_web_page_preview=True)
+    update.message.reply_text('Todo lo que te haya escrito está bajo licencia [CC BY-NC 4.0]('
+                              'https://creativecommons.org/licenses/by-nc/4.0/)', parse_mode='markdown', disable_web_page_preview=True)
+
+
 if __name__ == "__main__":
     tm_token = '1384306034:AAE_FifFJHaIPvifaWTTMsI08axdbzgIBSE'
     updater = Updater(tm_token, use_context=True)
@@ -337,6 +350,7 @@ if __name__ == "__main__":
     dp.add_handler(CommandHandler('info', bot_more_info))
     dp.add_handler(CommandHandler('situacion', bot_situacion))
     dp.add_handler(CommandHandler('general', bot_general))
+    dp.add_handler(CommandHandler('license', bot_license))
     dp.add_handler(MessageHandler(Filters.text & (~Filters.command), bot_typed_input))
 
     updater.start_polling()
