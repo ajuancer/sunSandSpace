@@ -13,7 +13,7 @@ __author__ = "Juan Cerdeño"
 __copyright__ = "Copyright 2020, Juan Cerdeño"
 __license__ = "Affero GPL 3.0"
 __version__ = "0.1"
-__url__ = https://www.github.com/ajuancer/sunsandspace
+__url__ = https://www.github.com/ajuancer/sunSandSpace
 __status__ = "Development"
 """
 
