@@ -63,7 +63,7 @@ class Sector(object):
 
 def get_data(path):
     """
-    Function responsible for data standarization.
+    Function responsible for data standardization.
     Performs:
      - server connection.
      - sectors cords dict.
