@@ -283,9 +283,9 @@ def bot_typed_input(update, context):
     text = update.message.text.lower()
     context.user_data['choice'] = text
     beaches_info = get_data(API_URL)
-    for beach in beaches_info:
-        if text in beach.name.lower() and len(text) > 7:
-            beach_info = get_beach_info(int(beach.id), beaches_info)
+    for beach_info in beaches_info:
+        if text in beach_info.name.lower() and len(text) > 7:
+            beach_info = get_beach_info(int(beach_info.id), beaches_info)
             update.message.reply_text(f'Por lo que veo, la {beach_info[1].name} está ocupada un '
                                       f'{str(round(beach_info[1].averageEstimatedOccupation))}%')
             update.message.reply_photo(beach_info[0], caption='Para ser más concretos, la cosa se ve asi.')
