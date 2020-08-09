@@ -95,16 +95,16 @@ def plot_info(img_path, beach_info):
     """
     # Basic color palette (from green (0) to red (-1)).
     colours = ['#25f047af', '#9df025af', '#def025af', '#f0d125af', '#f09a25af', '#f06325af', '#f03725af']
-    BBox = None
+    lims = None
     with open('info.json', 'r') as f:
         data = json.load(f)
         for beach_json in data['beach']:
             if int(beach_json['id']) == beach_info.id:
-                BBox = [float(i) for i in beach_json['coords']]
+                lims = [float(i) for i in beach_json['coords']]
     fig, ax = plt.subplots(figsize=(8, 4))
     bk_img = plt.imread(img_path)
-    ax.set_xlim(BBox[0], BBox[1])
-    ax.set_ylim(BBox[3], BBox[2])
+    ax.set_xlim(lims[0], lims[1])
+    ax.set_ylim(lims[3], lims[2])
     for sector in beach_info.sectors:
         # temp
         temp = {'beach': [
@@ -165,7 +165,7 @@ def plot_info(img_path, beach_info):
                 fontname='Open Sans',
                 weight='light', backgroundcolor='#fff')
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1, wspace=0, hspace=0)
-    ax.imshow(bk_img, extent=BBox, aspect='auto', origin='lower')
+    ax.imshow(bk_img, extent=lims, aspect='auto', origin='lower')
     buf = io.BytesIO()
     plt.savefig(buf, format='png', dpi=300)
     buf.seek(0)
@@ -290,7 +290,7 @@ def bot_general(update, context):
     beaches_info = get_data('https://playasapi.ctic.es/v1/zones')
     status_str = 'Ha vista general, te puedo decir que '
     for beach_info in beaches_info[:-1]:
-        status_str = status_str + [
+        status_str += [
             f' la {beach_info.name} está ocupada en un {str(round(beach_info.averageEstimatedOccupation))}%, ' if not round(
                 beach_info.averageEstimatedOccupation) == 0 else f'la {beach_info.name} está vacia, '][0]
     status_str = f'{status_str}y la ' + [
@@ -329,5 +329,3 @@ if __name__ == "__main__":
 
     updater.start_polling()
     updater.idle()
-
-#test from origin to local-master
