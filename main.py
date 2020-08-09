@@ -275,6 +275,11 @@ def bot_situacion(update, context):
 
 
 def bot_typed_input(update, context):
+    """
+    Define any text other than command handler.
+    :param update: Telegram
+    :param context: Telegram
+    """
     text = update.message.text.lower()
     context.user_data['choice'] = text
     beaches_info = get_data(API_URL)
@@ -290,6 +295,11 @@ def bot_typed_input(update, context):
 
 
 def bot_general(update, context):
+    """
+    Define /general command. Gives general ingo about all beaches. bot_typed_input ends here.
+    :param update: Telegram
+    :param context: Telegram
+    """
     beaches_info = get_data(API_URL)
     status_str = 'Ha vista general, te puedo decir que '
     for beach_info in beaches_info[:-1]:
