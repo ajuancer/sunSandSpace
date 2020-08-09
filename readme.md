@@ -1,12 +1,12 @@
 # SunSandSpace
 
-![SunSandSpace icon](www.github.io/ajuancer/sunSandSpace/master/docs/resources/img/logo_v1.png)**SunSandSpace** is a [Telegram](www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested[^fn1] to reduce the spread of COVID-19[^fn2].
+![SunSandSpace icon](www.github.io/ajuancer/sunSandSpace/master/docs/resources/img/logo_v1.png)**SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested[^fn1] to reduce the spread of COVID-19[^fn2].
 
 The project contains these files:
 
-- [`main.py`](/main.py): File containing almost all the program.
-- [`img`](img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](www.openstreetmap.org).
-- [`info.json`](/info.json): JSON file containing the limit coords for each image in the `/img` dir. This is a _temp patch_ to cover some missing info of the official API. 
+- [`main.py`](https://github.com/ajuancer/master/main.py): File containing almost all the program.
+- [`img`](https://github.com/ajuancer/master/img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](https://www.openstreetmap.org).
+- [`info.json`](https://github.com/ajuancer/master/info.json): JSON file containing the limit coords for each image in the `/img` dir. This is a _temp patch_ to cover some missing info of the official API. 
 
 ## I want to use it!
 
@@ -16,7 +16,7 @@ A preview of the bot is available at the [official page](https://ajuancer.github
 
 ## Contribute.
 
-You can fork this project. Feel free to [contact me](https://ajuacner.github.io). 
+You can fork this project. Feel free to [contact me](https://ajuancer.github.io). 
 
 ### The dependences are:
 
