@@ -30,6 +30,9 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler,
                           Filters, CallbackQueryHandler)
 
 
+API_URL = 'https://playasapi.ctic.es/v1/zones'
+
+
 class Beach(object):
     """
     Beach object containing all information about a given beach.
@@ -256,7 +259,7 @@ def bot_beach_markup_handler(update, context):
     """
     query = update.callback_query
     query.answer()
-    beach_info = get_beach_info(int(query.data), get_data('https://playasapi.ctic.es/v1/zones'))
+    beach_info = get_beach_info(int(query.data), get_data(API_URL))
     update.callback_query.edit_message_text(
         f'Por lo que veo, la {beach_info[1].name} está ocupada un {str(round(beach_info[1].averageEstimatedOccupation))} %')
     query.message.reply_photo(beach_info[0], caption='Para ser más concretos, la cosa se ve asi.')
@@ -274,7 +277,7 @@ def bot_situacion(update, context):
 def bot_typed_input(update, context):
     text = update.message.text.lower()
     context.user_data['choice'] = text
-    beaches_info = get_data('https://playasapi.ctic.es/v1/zones')
+    beaches_info = get_data(API_URL)
     for beach in beaches_info:
         if text in beach.name.lower() and len(text) > 7:
             beach_info = get_beach_info(int(beach.id), beaches_info)
@@ -287,7 +290,7 @@ def bot_typed_input(update, context):
 
 
 def bot_general(update, context):
-    beaches_info = get_data('https://playasapi.ctic.es/v1/zones')
+    beaches_info = get_data(API_URL)
     status_str = 'Ha vista general, te puedo decir que '
     for beach_info in beaches_info[:-1]:
         status_str += [
@@ -301,7 +304,6 @@ def bot_general(update, context):
 
 
 if __name__ == "__main__":
-    api_url = 'https://playasapi.ctic.es/v1/zones'
     tm_token = '1384306034:AAE_FifFJHaIPvifaWTTMsI08axdbzgIBSE'
     updater = Updater(tm_token, use_context=True)
     dp = updater.dispatcher
@@ -313,7 +315,7 @@ if __name__ == "__main__":
 
     beach_menu = []
     beach_keyboard = []
-    for beach in get_data(api_url):
+    for beach in get_data(API_URL):
         beach_menu.append([InlineKeyboardButton(beach.name, callback_data=beach.id)])
         beach_keyboard.append([KeyboardButton(beach.name)])
     beach_keyboard_markup = ReplyKeyboardMarkup(beach_keyboard, one_time_keyboard=True)
