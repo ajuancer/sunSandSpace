@@ -35,7 +35,6 @@ class Beach(object):
     """
     Beach object containing all information about a given beach.
     """
-
     def __init__(self, data, sectors):
         """
         The constructor for Beach class.
@@ -91,7 +90,7 @@ def plot_info(img_path, beach_info):
     Plots occupation info. of a specific beach on a map.
     :param img_path: The path (or URL) of the map located file.
     :param beach_info: The Beach-formatted info. of the specific beach.
-    :return:
+    :return: The generated image on memory buffer
     """
     # Basic color palette (from green (0) to red (-1)).
     colours = ['#25f047af', '#9df025af', '#def025af', '#f0d125af', '#f09a25af', '#f06325af', '#f03725af']
