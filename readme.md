@@ -1,5 +1,5 @@
 # SunSandSpace
-<img src="docs/resources/img/logo_v1.png" alt="Project logo" align="left" width="80"> **SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1]</sup> to reduce the spread of COVID-19<sup>[2]</sup>.
+<img src="docs/resources/img/logo_v1.png" alt="Project logo" align="left" width="80"> **SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1]</sup> to reduce the spread of COVID-19<sup>[2]</sup>. You can be seen in action [here](https://ajuancer.github.io/sunSandSpace/resources/video/test_v0_0.mp4)
 
 The project contains these files:
 
@@ -15,17 +15,25 @@ A preview of the bot is available at the [official page](https://ajuancer.github
 
 ## Contribute.
 
-You can fork this project. Feel free to [contact me](https://ajuancer.github.io). 
+You can fork this project. Feel free to [contact me](https://ajuancer.github.io) if you have need help. 
 
-### The dependences are:
+### 1. The dependences are:
 
-- Telegram module.
-- The requests module.
-- Matplotlib.
+- [python-telegram-bot](https://python-telegram-bot.org/), wrapper to communicate with the [Telegram API](https://core.telegram.org/api).
+- The [requests](https://pypi.org/project/requests/) module, to stablish the communication with the [beach occupation API](https://www.gijon.es/es/datos/ocupacion_playas).
+- [Matplotlib](https://matplotlib.org/), to graph the information on the maps.
 
-### The API:
+### 2. The API:
 
-This bot uses the official API maintained by the Gijón Local Council, available [here](https://www.gijon.es/es/datos/ocupacion_playas).
+This bot uses the official API maintained by the Gijón Local Council. You can check the structure of the data  [here](https://www.gijon.es/es/datos/ocupacion_playas), and get the info  [here](https://playasapi.ctic.es/v1/zones).
+
+### 3. Installation.
+
+1. Create a new bot through Telegram [@botfather](https://t.me/botfather) and get the **access token**. You can see a tutorial [here](https://core.telegram.org/bots#6-botfather)._Remember to keep it private**_
+2. Clone this repository. Make sure `main.py` is located in the same dir where `img` is located. Or change it on the `main.py` file.
+3. Download the dependences. You can use `install -r requirements.txt` to install the libraries listed above.
+4. Replace the var `tm_token` with the access token you obtained in step #1.
+5. Run the code.
 
 ## License.
 
