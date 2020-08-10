@@ -1,12 +1,11 @@
 # SunSandSpace
-
-![SunSandSpace icon](https://raw.githubusercontent.com/ajuancer/sunSandSpace/master/docs/resources/img/logo_v1.png | width=80)**SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1][fn1]</sup> to reduce the spread of COVID-19<sup>[2][fn2]</sup>.
+<img src="docs/resources/img/logo_v1.png" alt="Project logo" align="left" width="80"> **SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1]</sup> to reduce the spread of COVID-19<sup>[2]</sup>.
 
 The project contains these files:
 
-- [`main.py`](https://github.com/ajuancer/master/main.py): File containing almost all the program.
-- [`img`](https://github.com/ajuancer/master/img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](https://www.openstreetmap.org).
-- [`info.json`](https://github.com/ajuancer/master/info.json): JSON file containing the limit coords for each image in the `/img` dir. This is a _temp patch_ to cover some missing info of the official API. 
+- [`main.py`](main.py): File containing almost all the program.
+- [`img`](img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](https://www.openstreetmap.org).
+- [`info.json`](info.json): JSON file containing the limit coords for each image in the `/img` dir. This is a _temp patch_ to cover some missing info of the official API. 
 
 ## I want to use it!
 
@@ -40,7 +39,7 @@ You can [mail me](https://ajuancer.github.io) if you want to know more informati
 
 ------
 
-[fn1]: [Centers for Disease Control and Prevention](https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/social-distancing.html), Centers for Disease Control and Prevention, 2020.
+[1]: [Social Distancing: Keep a Safe Distance to Slow the Spread.](https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/social-distancing.html), Centers for Disease Control and Prevention, 2020.
 
-[fn2]: [Coronavirus disease (COVID-19) pandemic](https://www.who.int/emergencies/diseases/novel-coronavirus-2019), WHO, 2020
+[2]: [Coronavirus disease (COVID-19) pandemic](https://www.who.int/emergencies/diseases/novel-coronavirus-2019), WHO, 2020
 
