@@ -29,7 +29,7 @@ This bot uses the official API maintained by the Gijón Local Council. You can c
 
 ### 3. Installation.
 
-1. Create a new bot through Telegram [@botfather](https://t.me/botfather) and get the **access token**. You can see a tutorial [here](https://core.telegram.org/bots#6-botfather)._Remember to keep it private**_
+1. Create a new bot through Telegram [@botfather](https://t.me/botfather) and get the **access token**. You can see a tutorial [here](https://core.telegram.org/bots#6-botfather). _**Remember to keep it private**_
 2. Clone this repository. Make sure `main.py` is located in the same dir where `img` is located. Or change it on the `main.py` file.
 3. Download the dependences. You can use `install -r requirements.txt` to install the libraries listed above.
 4. Replace the var `tm_token` with the access token you obtained in step #1.
