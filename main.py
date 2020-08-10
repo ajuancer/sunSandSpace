@@ -84,7 +84,6 @@ def get_data(path):
     return json_beaches
 
 
-# Map under © OpenStreetMap contributors, from https://www.openstreetmap.org/.
 # /!\ Should get sector coords (polygon or point), temp solution with extra file.
 # Constant coords instead of given ones (Beach.point) due to plot method system.
 def plot_info(img_path, beach_info):
