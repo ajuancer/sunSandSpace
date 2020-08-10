@@ -1,5 +1,5 @@
 # SunSandSpace
-<img src="docs/resources/img/logo_v1.png" alt="Project logo" align="left" width="80"> **SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1]</sup> to reduce the spread of COVID-19<sup>[2]</sup>. You can see him in action [here](https://ajuancer.github.io/sunSandSpace/resources/video/test_v0_0.mp4)
+<img src="docs/resources/img/logo_v1.png" alt="Project logo" align="left" width="80"> **SunSandSpace** is a [Telegram](https://www.telegram.org) bot that checks the Gijón beaches occupation, making easier to choose the perfect place for maintaining social distancing, one measure suggested<sup>[1]</sup> to reduce the spread of COVID-19<sup>[2]</sup>. You can see him in action [here](https://ajuancer.github.io/sunSandSpace/resources/video/test_v0_0.mp4).
 
 The project contains these files:
 
@@ -15,7 +15,7 @@ A preview of the bot is available at the [official page](https://ajuancer.github
 
 ## Contribute.
 
-You can fork this project. Feel free to [contact me](https://ajuancer.github.io) if you have need help. 
+You can fork this project. Feel free to [contact me](https://ajuancer.github.io) if you have any problem. 
 
 ### 1. The dependences are:
 
