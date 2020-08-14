@@ -7,7 +7,6 @@ Python script about beach occupation status (in real time).
 Get information about beach occupation from the specific API available for the general public,
 process the information creating a specific map, and send the result via telegram to the user
 that has requested it.
-An easy and fast way to get the situation of beach space while maintaining a secure and private communication.
 
 __author__ = "Juan Cerdeño"
 __copyright__ = "Copyright 2020, Juan Cerdeño"
@@ -35,6 +34,7 @@ class Beach(object):
     """
     Beach object containing all information about a given beach.
     """
+
     def __init__(self, data, sectors):
         """
         The constructor for Beach class.
@@ -94,73 +94,38 @@ def plot_info(img_path, beach_info):
     """
     # Basic color palette (from green (0) to red (-1)).
     colours = ['#25f047af', '#9df025af', '#def025af', '#f0d125af', '#f09a25af', '#f06325af', '#f03725af']
+    # tmp
     lims = None
+    sectors_coords = None
     with open('info.json', 'r') as f:
         data = json.load(f)
         for beach_json in data['beach']:
             if int(beach_json['id']) == beach_info.id:
                 lims = [float(i) for i in beach_json['coords']]
+                sectors_coords = beach_json['sectors']
+    # tmp
     fig, ax = plt.subplots(figsize=(8, 4))
     bk_img = plt.imread(img_path)
     ax.set_xlim(lims[0], lims[1])
     ax.set_ylim(lims[3], lims[2])
     for sector in beach_info.sectors:
-        # temp
-        temp = {'beach': [
-            {
-                'id': 'SL002',
-                'coords': (43.542694, -5.659651)
-            },
-            {
-                'id': 'SL003',
-                'coords': (43.542072, -5.658059)
-            },
-            {
-                'id': 'SL004',
-                'coords': (43.541776, -5.657011)
-            },
-            {
-                'id': 'SL005',
-                'coords': (43.541364, -5.655278)
-            },
-            {
-                'id': 'SL006',
-                'coords': (43.541102, -5.652852)
-            },
-            {
-                'id': 'SL007',
-                'coords': (43.541226, -5.651460)
-            },
-            {
-                'id': 'SL008',
-                'coords': (43.541195, -5.649025)
-            },
-            {
-                'id': 'SL009',
-                'coords': (43.541179, -5.647147)
-            },
-            {
-                'id': 'SL010',
-                'coords': (43.541842,
-                           -5.645516)
-            }
-        ]
-        }
+        # tmp
         sector_point = None
-        for item in temp['beach']:
+        for item in sectors_coords:
             if str(item['id']) == str(sector.id):
-                sector_point = item['coords']
-        # temp
+                sector_point = [float(coord) for coord in item['coords'].split(", ")]
+        # tmp
         if sector_point:
             colour_i = int(
                 (sector.estimatedOccupation / 100) * len(colours) - 1 if sector.estimatedOccupation != 0 else 0)
             ax.plot(sector_point[1], sector_point[0], 'o', color=colours[colour_i], markersize=32)
             plt.annotate(str(sector.estimatedOccupation) + '%',
-                         (float(sector_point[1]) - .0003, float(sector_point[0]) - .0001), color='#f9f9f9')
+                         (sector_point[1] - .00002, sector_point[0] - .0001), color='#f9f9f9')
     ax.axis('off')
-    plt.figtext(0.001, .06, datetime.now().strftime(' A las %H:%M del %m/%d/%Y (UTC+2)'), fontsize=7, ha='left',
+    plt.figtext(0.001, .06, datetime.now().strftime(f' {beach_info.name} occupation status at %m/%d/%Y, %H:%M'),
+                fontsize=7, ha='left',
                 weight='light', backgroundcolor='#fff')
-    plt.figtext(0.001, 0.02, ' Por @SunSandSpace_bot (t.me/sunSandSpace_bot).', fontsize=7,
+    plt.figtext(0.001, 0.02, ' By @SunSandSpace_bot (t.me/sunSandSpace_bot).', fontsize=7,
                 weight='light', backgroundcolor='#fff')
     plt.figtext(0.999, 0.065, 'Data: CC BY 4.0, Gijón Local Council. ', fontsize=7,
                 ha='right', weight='light', backgroundcolor='#fff')
@@ -179,7 +144,7 @@ def get_beach_info(beach_id, beaches_info):
     Searches for all the available info. of the specified beach.
     :param beach_id: The ID of the beach to look for.
     :param beaches_info: An array of Beach objects that contains all info.
-    :return: the image generated and the beach available info.
+    :return: the image generated and the beach available info. None if no beach is returned.
     """
     beach_occupation_plotted = None
     requested_beach = None
@@ -198,6 +163,10 @@ def get_beach_map(beach_id):
     """
     if beach_id == 1:
         return 'img/san_lorenzo_2300.png'
+    elif beach_id == 2:
+        return 'img/poniente_2300.png'
+    elif beach_id == 3:
+        return 'img/arbeyal_2300.png'
     else:
         return None
 
@@ -208,8 +177,8 @@ def bot_start(update, context):
     :param update: Telegram needed param.
     :param context: Telegram needed param.
     """
-    update.message.reply_text('¡Hola! Soy SunSandSpace, estoy aquí para ayudarte.')
-    update.message.reply_text('Dime una 🏖️playa🏖️, y miro a ver cuanta gente hay.',
+    update.message.reply_text('¡Hola!')
+    update.message.reply_text('Dime una playa🏖️, y miro a ver cuanta gente hay.',
                               reply_markup=beach_markup)
 
 
@@ -239,7 +208,7 @@ def bot_more_info(update, context):
     update.message.reply_text('*Sobre la epidemia*: Puedes obtener más información en fuentes oficiales, por ejemplo:'
                               '\n- [Web del Gobierno de Asturias sobre COVID19](coronavirus.asturias.es)'
                               '\n- [Twitter de AsturSalud](www.twitter.com/astursalud),'
-                              '\no preguntar a mi amigo [@asturianBot](www.twitter.com/asturianBot)',
+                              '\no seguir a mi amigo [@asturianBot](www.twitter.com/asturianBot) en twitter.',
                               parse_mode='markdown', disable_web_page_preview=True)
     update.message.reply_text('*Sobre mi*: Si tienes curiosidad por saber más sobre mi, echa un ojo [aquí]('
                               'ajuancer.github.io/sunSandSpace)', parse_mode='markdown')
