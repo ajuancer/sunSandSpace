@@ -4,7 +4,7 @@
 The project contains these files:
 
 - [`main.py`](main.py): File containing almost all the program.
-- [`img`](img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](https://www.openstreetmap.org).
+- [`img/`](img): Dir with the needed images. They are beaches maps obtained from [OpenStreetMap](https://www.openstreetmap.org).
 - [`info.json`](info.json): JSON file containing the limit coords for each image in the `/img` dir. This is a _temp patch_ to cover some missing info of the official API. 
 
 ## I want to use it!
